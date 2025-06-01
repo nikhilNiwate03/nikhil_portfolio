@@ -21,7 +21,25 @@ const ProjectCards = ({ projectData }: IProjectCards) => {
     .replace(/\/$/, "");
   return (
     <div className="flex flex-col md:flex-row gap-5  p-2 items-center">
-      <div className="h-[200px] flex-1">
+      <div className="h-[200px] flex-1 flex flex-col gap-2">
+        <div className="flex md:hidden flex-col md:flex-row items-start md:items-center justify-between">
+          <h4 className="">{projectData.projectTitle}</h4>
+          {cleanUrl && (
+            <a
+              href={projectData.projectUrl}
+              target="_blank"
+              className="flex items-center gap-1.5 text-[#999999]  hover:text-gray-300 md:p-1.5 rounded-md"
+            >
+              <FaLink />
+
+              <p className=" font-semibold" style={{ fontSize: "14px" }}>
+                {projectData.projectUrlName
+                  ? projectData.projectUrlName
+                  : cleanUrl}
+              </p>
+            </a>
+          )}
+        </div>
         <Image
           src={projectData.projectImage}
           alt={projectData.projectTitle}
@@ -35,7 +53,7 @@ const ProjectCards = ({ projectData }: IProjectCards) => {
         />
       </div>
       <div className="flex-1 flex flex-col gap-2">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between">
+        <div className="hidden md:flex flex-col md:flex-row items-start md:items-center justify-between">
           <h4 className="">{projectData.projectTitle}</h4>
           {cleanUrl && (
             <a
